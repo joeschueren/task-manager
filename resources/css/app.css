@@ -1,0 +1,18 @@
+:root{
+    --main-color: #3562c4;
+}
+
+body{
+  width: auto;
+  margin: 0px;
+  font-family: Helvetica;
+}
+
+.site-container{
+  max-width: 1920px;
+  margin: auto;
+}
+
+input{
+  cursor: text !important;
+}
