@@ -7,7 +7,7 @@
                 <span data-testid="logo" className="header-text">Taskify</span>
             </div>
             <span className="welcome">Welcome Back to Taskify</span>
-            <p>Don't have an account? <a className="switch-form" href="/register">Register</a></p>
+            <p>Don't have an account? <a className="switch-form" href="/app/register">Register</a></p>
             <form  @submit.prevent="handleSubmit" className="form">
                 <input type="hidden" name="_token" v-model="csrfToken">
                 <span className="input-label">Email</span>
