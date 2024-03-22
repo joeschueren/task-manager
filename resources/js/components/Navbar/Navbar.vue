@@ -7,7 +7,6 @@
         <div className="nav-title">
             <a href="/" className="nav-title">
                 <span data-testid="title" className="title-text">Taskify</span>
-                <img className="logo" alt="Company Logo"></img>
             </a>
             <div className="toggle-button">
                 <i className="fa-solid fa-bars fa-lg"></i>
