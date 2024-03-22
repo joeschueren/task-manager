@@ -20,7 +20,7 @@
     </div>
 </template>
 <script>
-    
+    import router from "@/router";
     export default {
         data() {
             return {
@@ -32,14 +32,21 @@
         },
         methods: {
             async handleSubmit() {
-                fetch("http://localhost:8000/api/login", {
+
+                const res = await fetch("http://localhost:8000/api/login", {
                     method: "Post",
                     headers: {
                         "Content-Type": "application/json",
                         "X-CSRF-TOKEN": document.querySelector("meta[property='csrf-token']").getAttribute("content")
                     },
                     body: JSON.stringify(this.formData)
-                })
+                });
+
+                console.log(res);
+
+                if(res.status === 200){
+                    this.$router.push("dashboard");
+                }
             }
         }
     }

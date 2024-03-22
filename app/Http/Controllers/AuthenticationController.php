@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Log;
 use App\Models\User;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Hash;
 
 
@@ -17,7 +18,12 @@ class AuthenticationController extends Controller{
         $password = $request->input("password");
 
         if (Auth::attempt(['email' => $email, 'password' => $password])) {
-            return response()->json(["message" => 'Authentication Successful'], Response::HTTP_OK);
+
+            $user = Auth::user();
+
+            Session::put('email', $user->email);
+
+            return Redirect("app/dashboard");
         } else {
             return response()->json(["message" => 'Unauthorized'], Response::HTTP_UNAUTHORIZED);
         }

@@ -12,3 +12,5 @@ Route::get('app/{any?}', function () {
 Route::post('api/login', [AuthenticationController::class, 'Login'])->name('login');
 
 Route::post('api/register', [AuthenticationController::class, 'Register'])->name('register');
+
+Route::post('api/dashboard', [DashboardController::class, 'getDashboardData'])->name('dashboard');
