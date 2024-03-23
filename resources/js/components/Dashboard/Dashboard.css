@@ -1,0 +1,5 @@
+@import "../../../css/app.css";
+.dashboard-container{
+    background-color: var(--main-color);
+    min-height: calc(100vh - 65px);
+}

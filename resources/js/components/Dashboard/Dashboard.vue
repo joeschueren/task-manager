@@ -1,7 +1,9 @@
 <script setup>
 </script>
 <template>
+    <div class="dashboard-container">
 
+    </div>
 </template>
 <script>
     import baseURL from "../../env-config.js";
@@ -15,10 +17,7 @@
                 }
             }
         },
-        methods:{
-            async getUserData()
-        },
-        mounted() {
+        async mounted() {
             const res = await fetch(baseURL+"api/dashboard", {
                 method: "post",
                 headers: {
