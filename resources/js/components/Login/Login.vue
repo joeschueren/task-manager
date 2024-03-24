@@ -42,8 +42,6 @@
                     body: JSON.stringify(this.formData)
                 });
 
-                console.log(res);
-
                 if(res.status === 200){
                     this.$router.push("dashboard");
                 }

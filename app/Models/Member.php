@@ -12,7 +12,7 @@ class Member extends Model
 
     protected $table = 'members';
 
-    protected $fillable = ['email'];
+    protected $fillable = ['email', 'role', 'team_id'];
 
     public $timestamps = true;
 

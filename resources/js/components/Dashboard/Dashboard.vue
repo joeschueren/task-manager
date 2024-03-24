@@ -6,7 +6,7 @@
             <div class="create">
                 <span class="create-title">Create a Task</span>
                 <span class="input-label">Task Name:</span>
-                <input class="create-input" placeholder="Task Name" v-model="taskData.taskNAme"></input>
+                <input class="create-input" placeholder="Task Name" v-model="taskData.taskName"></input>
                 <span class="input-label">Importance:</span>
                 <input class="create-input" placeholder="Importance" v-model="taskData.importance"></input>
                 <span class="input-label">Time Frame:</span>
@@ -45,13 +45,13 @@
             async handleSubmit(){
 
                 try{
-                    const res = await fetch(baseURL+"api/task-submit", {
+                    const res = await fetch(baseURL+"api/create-task", {
                         method:"post",
                         headers: {
                             "Content-Type": "application/json",
                             "X-CSRF-TOKEN": document.querySelector("meta[property='csrf-token']").getAttribute("content")
                         },
-                        body: JSON.stringify(taskData)
+                        body: JSON.stringify(this.taskData)
                     });
 
                     if(res.status === 200){
@@ -61,7 +61,8 @@
                         this.taskData.warning = "Error Creating Task, Try Again"
                     }
 
-                } catch {
+                } catch(error) {
+                    console.log(error);
                     this.taskData.warning = "Server Error Please Try Again"
                 }
                 

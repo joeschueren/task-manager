@@ -12,7 +12,7 @@ use App\Models\User;
 class DashboardController extends Controller{
 
     public function __construct(){
-        $this->middleware(CheckAuthentication::class);
+        $this->middleware(CheckAuth::class);
     }
 
     public function getDashboardData(Request $request){

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthenticationController;
+use App\Http\Controllers\TaskController;
 
 Route::redirect('/', '/app');
 
@@ -13,4 +14,6 @@ Route::post('api/login', [AuthenticationController::class, 'Login'])->name('logi
 
 Route::post('api/register', [AuthenticationController::class, 'Register'])->name('register');
 
-Route::post('api/dashboard', [DashboardController::class, 'getDashboardData'])->name('dashboard');
+Route::get('api/dashboard', [DashboardController::class, 'getDashboardData'])->name('dashboard');
+
+Route::post("api/create-task", [TaskController::class, 'createTask'])->name('create-task');
