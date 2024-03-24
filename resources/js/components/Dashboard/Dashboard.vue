@@ -17,7 +17,9 @@
                 </div>
             </div>
             <div class="tasks">
-
+                <p>{{ userData.email }}</p>
+                <p>{{ JSON.stringify(userData.userTasks) }}</p>
+                <p>{{ userData.teamName }}</p>
             </div>
         </div>
     </div>
@@ -28,9 +30,9 @@
         data() {
             return {
                 userData: {
-                    email: "",
+                    email: {},
                     userTasks: [],
-                    teamName: "",
+                    teamName: {},
                 },
                 taskData: {
                     taskName: "",
@@ -73,19 +75,18 @@
             try{
                 const res = await fetch(baseURL+"api/dashboard", {
                     method: "get",
-                    headers: {
-                        "Content-Type": "application/json",
-                        "X-CSRF-TOKEN": document.querySelector("meta[property='csrf-token']").getAttribute("content")
-                    },
                     credentials: "include"
                 })
 
                 const data = await res.json();
 
-                this.userData.email = data.email;
+                console.log(data.member_info);
+
+                this.userData.email = data.member_info;
                 this.userData.userTasks =  data.tasks;
-                this.userData.teamName = data.team;
-            } catch {
+                this.userData.teamName = data.team_info;
+            } catch (error) {
+                console.log(error);
                 this.taskData.warning = "Error Contacting Server Try Again Later"
             }
             

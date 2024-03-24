@@ -2,9 +2,14 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthenticationController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TaskController;
 
 Route::redirect('/', '/app');
+
+Route::get('app/login', function () {
+    return view('client');
+});
 
 Route::get('app/{any?}', function () {
     return view('client');

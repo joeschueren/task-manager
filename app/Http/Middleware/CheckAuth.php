@@ -19,7 +19,7 @@ class CheckAuth
         if (Auth::check()) {
             return $next($request);
         } else {
-            return redirect()->route('login');
+            return redirect('http://localhost:8000/app/login');
         }
     }
 }
