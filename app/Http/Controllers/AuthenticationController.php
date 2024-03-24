@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Log;
 use App\Models\User;
+use App\Models\Member;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Hash;
 
@@ -48,6 +49,14 @@ class AuthenticationController extends Controller{
                 'password' => Hash::make($request->password),
                 'email_verified_at' => null,
                 'remember_token' => null,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s')
+            ]);
+
+            $member = Member::create([
+                'team_id' => null,
+                'email' => $request->email,
+                'role' => null,
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ]);
