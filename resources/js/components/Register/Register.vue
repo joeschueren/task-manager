@@ -16,21 +16,22 @@
                 <input type="password" className="form-input" placeholder="Password" v-model="formData.password"></input>
                 <span className="input-label">Confirm Password</span>
                 <input type="password" className="form-input" placeholder="Confirm Password" v-model="formData.confirm_password"></input>
-                <p className="warning"></p>
+                <p className="warning"> {{ formData.warning }}</p>
                 <button type="submit" className="form-button">Register</button>
             </form>
         </div>
     </div>
 </template>
 <script>
-
+    import router from "@/router";
     export default {
         data() {
             return{
                 formData: {
                     email: "",
                     password: "",
-                    confirm_password: ""
+                    confirm_password: "",
+                    warning: ""
                 },
                 csrfToken: "{{ csrf_token() }}"
             }
@@ -38,14 +39,25 @@
         methods: {
             async handleSubmit() {
                 
-                await fetch("http://localhost:8000/api/register", {
-                    method: "Post",
-                    headers:{
-                        "Content-Type": "application/json",
-                        "X-CSRF-TOKEN": document.querySelector("meta[property='csrf-token']").getAttribute("content")
-                    },
-                    body:  JSON.stringify(this.formData)
-                })
+                try{
+                    const res = await fetch("http://localhost:8000/api/register", {
+                        method: "Post",
+                        headers:{
+                            "Content-Type": "application/json",
+                            "X-CSRF-TOKEN": document.querySelector("meta[property='csrf-token']").getAttribute("content")
+                        },
+                        body:  JSON.stringify(this.formData)
+                    })
+
+                    if(res.status === 200){
+                        this.$router.push("dashboard");
+                    }
+                } catch {
+                    this.formData.warning = "Error Registering Try Again"
+                }
+
+
+                
             }
         }
     };

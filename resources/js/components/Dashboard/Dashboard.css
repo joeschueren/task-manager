@@ -56,3 +56,9 @@
     opacity: 80%;
     cursor: pointer;
 }
+
+.warning{
+    margin-bottom: 25px;
+    text-align: center;
+    color: var(--warning-color);
+}
