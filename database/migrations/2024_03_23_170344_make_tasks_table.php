@@ -16,6 +16,8 @@ return new class extends Migration
             $table->unsignedBigInteger('team_id');
             $table->string('creator_email');
             $table->string('task_name');
+            $table->integer('importance');
+            $table->timestamp('deadline')->nullable();
             $table->boolean('is_completed');
             $table->timestamps();
 

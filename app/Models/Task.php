@@ -12,7 +12,7 @@ class Task extends Model
 
     protected $table = 'tasks';
 
-    protected $fillable = ['creator_email', 'task_name', 'is_completed'];
+    protected $fillable = ['creator_email', 'task_name', 'is_completed', 'importance', 'deadline'];
 
     protected $attributes = [
         'is_completed' => false,
