@@ -1,3 +1,17 @@
 .task-div{
+    display: flex;
+    flex-direction: column;
     background-color: white;
+    padding: 30px;
+    margin: 25px;
+    border-radius: 15px;
+}
+
+.task-name{
+    font-size: 1rem;
+    color: var(--main-color);
+}
+
+span{
+    margin: 10px 0px;
 }

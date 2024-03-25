@@ -4,29 +4,32 @@
     <div class="dashboard-container">
         <div class="dashboard-row">
             <div class="create">
-                <span class="create-title">Create a Task</span>
-                <span class="input-label">Task Name:</span>
+                <span class="create-title">Add New Task</span>
                 <input class="create-input" placeholder="Task Name" v-model="taskData.taskName"></input>
-                <span class="input-label">Importance:</span>
                 <input class="create-input" placeholder="Importance" v-model="taskData.importance"></input>
-                <span class="input-label">Time Frame:</span>
-                <input class="create-input" placeholder="Time Frame" v-model="taskData.timeFrame"></input>
-                <span class="warning">{{ taskData.warning }}</span>
+                <input class="create-input" placeholder="Time Frame (Days)" v-model="taskData.timeFrame"></input>
                 <div class="plus-button" @click="handleSubmit">
                     <div class="plus">+</div>
                 </div>
             </div>
             <div class="tasks">
-                <p>{{ userData.email }}</p>
+                <!-- <p>{{ userData.email }}</p>
                 <p>{{ JSON.stringify(userData.userTasks) }}</p>
-                <p>{{ userData.teamName }}</p>
+                <p>{{ userData.teamName }}</p> -->
+                <div v-for="(task, index) in userData.userTasks" :key="index">
+                    <Task :task="task"></Task>
+                </div>
             </div>
         </div>
     </div>
 </template>
 <script>
     import baseURL from "../../env-config.js";
+    import Task from "./Task/Task.vue"
     export default {
+        components:{
+            Task
+        },
         data() {
             return {
                 userData: {
