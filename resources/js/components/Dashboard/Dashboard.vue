@@ -18,7 +18,7 @@
                 <div v-if="!userData.teamName" class="team-div">
                     <router-link class="team-anchor" to="/app/team-create">Create a Team</router-link>
                     <span class="team-join">or Join One:</span>
-                    <input class="create-input" v-model="inviteCode" placeholder="Team Code"></input>
+                    <input class="create-input" v-model="teamCode" placeholder="Team Code"></input>
                     <button class="team-button" @click="handleTeamRequest">Join Now</button>
                 </div>
             </div>
@@ -52,7 +52,8 @@
                     importance: "",
                     timeFrame: "",
                     warning: ""
-                }
+                },
+                teamCode: "",
 
             }
         },
@@ -79,6 +80,30 @@
                 } catch(error) {
                     console.log(error);
                     this.taskData.warning = "Server Error Please Try Again"
+                }
+                
+            },
+
+            async handleTeamRequest(){
+
+                try{
+                    const res = await fetch(baseURL+"api/join-team", {
+                        method: "post",
+                        credentials: "include",
+                        headers: {
+                            "Content-Type": "application/json",
+                            "X-CSRF-TOKEN": document.querySelector("meta[property='csrf-token']").getAttribute("content")
+                        },
+                        body: JSON.stringify(this.teamCode)
+                    })
+
+                    if(res.status === 200){
+                        window.location.reload();
+                    } else{
+                        this.taskData.warning = "Invalid Code";
+                    }
+                } catch (error) {
+                    this.taskData.warning = "Server Error Try Again";
                 }
                 
             }
