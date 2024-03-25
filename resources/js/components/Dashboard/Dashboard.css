@@ -72,6 +72,62 @@ p{
     color: white;
 }
 
+/* Team Manager */
+
+.teams{
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: space-evenly;
+    background-color: white;
+    width: 20%;
+    padding: 30px 50px;
+    border-radius: 15px;
+    margin: 0px 20px;
+}
+
+.teams-title{
+    color: var(--main-color);
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+}
+
+.team-div{
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: space-evenly;
+}
+
+.team-join{
+    margin-bottom: 25px;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.team-anchor{
+    margin-bottom: 25px;
+    text-decoration: none;
+    font-size: 1.25rem;
+}
+
+.team-button{
+    font-size: 1rem;
+    width: fit-content;
+    background-color: var(--main-color);
+    padding: 8px 14px;
+    margin-top: 20px;
+    color: white;
+    border: 0px;
+    box-shadow: none;
+    border-radius: 15px;
+}
+
+.team-button:hover, .team-anchor:hover{
+    opacity: 80%;
+    cursor: pointer;
+}
+
 /* Tasks Rows */
 
 .tasks{

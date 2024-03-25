@@ -12,6 +12,16 @@
                     <div class="plus">+</div>
                 </div>
             </div>
+            <div class="teams">
+                <span class="teams-title">Manage Your Team</span>
+                <span v-if="userData.teamName" class="team-name">{{ userData.teamName }}</span>
+                <div v-if="!userData.teamName" class="team-div">
+                    <router-link class="team-anchor" to="/app/team-create">Create a Team</router-link>
+                    <span class="team-join">or Join One:</span>
+                    <input class="create-input" v-model="inviteCode" placeholder="Team Code"></input>
+                    <button class="team-button" @click="handleTeamRequest">Join Now</button>
+                </div>
+            </div>
             <div class="tasks">
                 <!-- <p>{{ userData.email }}</p>
                 <p>{{ JSON.stringify(userData.userTasks) }}</p>
